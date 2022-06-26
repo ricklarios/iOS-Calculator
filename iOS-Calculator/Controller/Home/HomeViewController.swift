@@ -36,6 +36,50 @@ final class HomeViewController: UIViewController {
 	@IBOutlet weak var operatorAddition: UIButton!
 	@IBOutlet weak var operatorResult: UIButton!
 	
+	// MARK: - Variables
+	
+	private var total: Double = 0 		// Total
+	private var temp: Double = 0 		// Valor por pantalla
+	private var operating = false 		// Indica si se ha seleccionado un operador
+	private var decimal = false 		// Indica si el valor es decimal
+	private var operation: OperationType = .none
+	
+	// MARK: - Constantes
+	
+	private let kDecimalSeparator = Locale.current.decimalSeparator!
+	private let kMaxLength = 9
+	private let kMaxValue: Double = 999999999
+	private let kMinValue: Double = 0.00000001
+	
+	private enum OperationType {
+		case none, addition, substraction, multiplication, division, percent
+	}
+	
+	// Formateo de valores auxiliares
+		private let auxFormatter: NumberFormatter = {
+			let formatter = NumberFormatter()
+			let locale = Locale.current
+			formatter.groupingSeparator = ""
+			formatter.decimalSeparator = locale.decimalSeparator
+			formatter.numberStyle = .decimal
+			formatter.maximumIntegerDigits = 100
+			formatter.minimumFractionDigits = 0
+			formatter.maximumFractionDigits = 100
+			return formatter
+		}()
+	// Formateo de valores por pantalla por defecto
+		private let printFormatter: NumberFormatter = {
+			let formatter = NumberFormatter()
+			let locale = Locale.current
+			formatter.groupingSeparator = locale.groupingSeparator
+			formatter.decimalSeparator = locale.decimalSeparator
+			formatter.numberStyle = .decimal
+			formatter.maximumIntegerDigits = 9
+			formatter.minimumFractionDigits = 0
+			formatter.maximumFractionDigits = 8
+			return formatter
+		}()
+	
 	// MARK: Initialization
 	
 	init() {
@@ -64,7 +108,16 @@ final class HomeViewController: UIViewController {
 		number9.round()
 		numberDecimal.round()
 		
-
+		operatorAC.round()
+		operatorPlusMinus.round()
+		operatorPercent.round()
+		operatorDivision.round()
+		operatorMultiplication.round()
+		operatorSubstraction.round()
+		operatorAddition.round()
+		operatorResult.round()
+		
+		numberDecimal.setTitle(kDecimalSeparator, for: .normal)
 	       
     }
 
