@@ -12,7 +12,7 @@ final class HomeViewController: UIViewController {
 	// MARK: - Outlets
 	
 	// Result Label
-	@IBOutlet weak var reusltLabel: UILabel!
+	@IBOutlet weak var resultLabel: UILabel!
 	// Numbers buttons
 	@IBOutlet weak var number0: UIButton!
 	@IBOutlet weak var number1: UIButton!
@@ -158,4 +158,51 @@ final class HomeViewController: UIViewController {
 		print(sender.tag)
 	}
 	
+	// Limpia los valores
+	private func clear() {
+		operation = .none
+		operatorAC.setTitle("AC", for: .normal)
+		if temp != 0 {
+			temp = 0
+			resultLabel.text = "0"
+		} else {
+			total = 0
+			result()
+		}
+	}
+	
+	private func result() {
+		
+		switch operation {
+		
+		case .none:
+			// No hacemos nada
+			break
+		case .addition:
+			total = total + temp
+			break
+		case .substraction:
+			total = total - temp
+			break
+		case .multiplication:
+			total = total * temp
+			break
+		case .division:
+			total = total / temp
+			break
+		case .percent:
+			temp = temp / 100
+			total = temp
+			break
+		}
+		
+		// Formateo en pantalla
+		
+		if total <= kMaxValue || total >= kMinValue {
+			resultLabel.text = printFormatter.string(from: NSNumber(value: total))
+		}
+		
+		print("TOTAL: \(total)")
+		
+	}
 }
