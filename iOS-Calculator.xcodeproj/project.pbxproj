@@ -70,6 +70,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		606926E52869019700016EA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		606926E62869019F00016EA2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		606926E7286901A500016EA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				606926EA286901D500016EA2 /* Launch */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		606926E8286901AB00016EA2 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		606926EA286901D500016EA2 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				60FD8DB7285D441600B652C8 /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 		60FD8DA0285D441000B652C8 = {
 			isa = PBXGroup;
 			children = (
@@ -93,10 +130,13 @@
 		60FD8DAB285D441000B652C8 /* iOS-Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				60FD8DDC285D44BF00B652C8 /* Supporting Files */,
 				60FD8DAC285D441000B652C8 /* AppDelegate.swift */,
+				606926E8286901AB00016EA2 /* Util */,
+				606926E7286901A500016EA2 /* View */,
+				606926E62869019F00016EA2 /* Controller */,
+				606926E52869019700016EA2 /* Model */,
+				60FD8DDC285D44BF00B652C8 /* Supporting Files */,
 				60FD8DB5285D441600B652C8 /* Assets.xcassets */,
-				60FD8DB7285D441600B652C8 /* LaunchScreen.storyboard */,
 			);
 			path = "iOS-Calculator";
 			sourceTree = "<group>";
