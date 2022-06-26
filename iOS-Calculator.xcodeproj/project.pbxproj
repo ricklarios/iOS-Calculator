@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		606926EF286902DB00016EA2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606926ED286902DB00016EA2 /* HomeViewController.swift */; };
 		606926F0286902DB00016EA2 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606926EE286902DB00016EA2 /* HomeViewController.xib */; };
+		606926F22869178C00016EA2 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606926F12869178C00016EA2 /* UIButtonExtension.swift */; };
 		60FD8DAD285D441000B652C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FD8DAC285D441000B652C8 /* AppDelegate.swift */; };
 		60FD8DB6285D441600B652C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60FD8DB5285D441600B652C8 /* Assets.xcassets */; };
 		60FD8DB9285D441600B652C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60FD8DB7285D441600B652C8 /* LaunchScreen.storyboard */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		606926ED286902DB00016EA2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		606926EE286902DB00016EA2 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		606926F12869178C00016EA2 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		60FD8DA9285D441000B652C8 /* iOS-Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60FD8DAC285D441000B652C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60FD8DB5285D441600B652C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		606926E8286901AB00016EA2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				606926F12869178C00016EA2 /* UIButtonExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			files = (
 				60FD8DAD285D441000B652C8 /* AppDelegate.swift in Sources */,
 				606926EF286902DB00016EA2 /* HomeViewController.swift in Sources */,
+				606926F22869178C00016EA2 /* UIButtonExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
