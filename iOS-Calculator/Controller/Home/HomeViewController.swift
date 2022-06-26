@@ -81,6 +81,14 @@ final class HomeViewController: UIViewController {
 			formatter.maximumFractionDigits = 8
 			return formatter
 		}()
+	// Formateo de valores por pantalla en formato científico
+		private let printScientificFormatter: NumberFormatter = {
+			let formatter = NumberFormatter()
+			formatter.numberStyle = .scientific
+			formatter.maximumFractionDigits = 3
+			formatter.exponentSymbol = "e"
+			return formatter
+		}()
 	
 	// MARK: Initialization
 	
@@ -169,7 +177,7 @@ final class HomeViewController: UIViewController {
 		
 		result()
 		operating = true
-		operation = .addition
+		operation = .substraction
 		
 		sender.shine()
 	}
@@ -177,7 +185,7 @@ final class HomeViewController: UIViewController {
 		
 		result()
 		operating = true
-		operation = .substraction
+		operation = .addition
 		
 		sender.shine()
 	}
