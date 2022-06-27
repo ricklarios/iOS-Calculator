@@ -50,6 +50,7 @@ final class HomeViewController: UIViewController {
 	
 	private let kDecimalSeparator = Locale.current.decimalSeparator!
 	private let kMaxLength = 9
+	private let kTotal = "total"
 	// private let kMaxValue: Double = 999999999
 	// private let kMinValue: Double = 0.00000001
 	
@@ -139,7 +140,10 @@ final class HomeViewController: UIViewController {
 		operatorResult.round()
 		
 		numberDecimal.setTitle(kDecimalSeparator, for: .normal)
-	       
+	    
+		total = UserDefaults.standard.double(forKey: kTotal)
+		
+		result()
     }
 
 	// MARK: - Button Actions
@@ -318,6 +322,9 @@ final class HomeViewController: UIViewController {
 		operation = .none
 		
 		selectVisualOperation()
+		
+		// Para guardar el resultado en memoria
+		UserDefaults.standard.set(total, forKey: kTotal)
 		
 		print("TOTAL: \(total)")
 		
