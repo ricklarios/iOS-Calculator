@@ -170,33 +170,46 @@ final class HomeViewController: UIViewController {
 	}
 	@IBAction func operatorDivisionAction(_ sender: UIButton) {
 		
-		result()
+		if operation != .none {
+			result()
+		}
+				
 		operating = true
 		operation = .division
+		sender.selectOperation(true)
 		
 		sender.shine()
 	}
 	@IBAction func operatorMultiplicationAction(_ sender: UIButton) {
 		
-		result()
+		if operation != .none {
+			result()
+		}
 		operating = true
 		operation = .multiplication
+		sender.selectOperation(true)
 		
 		sender.shine()
 	}
 	@IBAction func operatorSubstractionAction(_ sender: UIButton) {
 		
-		result()
+		if operation != .none {
+			result()
+		}
 		operating = true
 		operation = .substraction
+		sender.selectOperation(true)
 		
 		sender.shine()
 	}
 	@IBAction func operatorAdditionAction(_ sender: UIButton) {
 		
-		result()
+		if operation != .none {
+			result()
+		}
 		operating = true
 		operation = .addition
+		sender.selectOperation(true)
 		
 		sender.shine()
 	}
@@ -216,6 +229,8 @@ final class HomeViewController: UIViewController {
 		
 		resultLabel.text = resultLabel.text! + kDecimalSeparator
 		decimal = true
+		
+		selectVisualOperation()
 		
 		sender.shine()
 	}
@@ -248,7 +263,9 @@ final class HomeViewController: UIViewController {
 		let number = sender.tag
 		temp = Double(currentTemp + String(number))!
 		resultLabel.text = printFormatter.string(from: NSNumber(value: temp))
-		print(sender.tag)
+		
+		selectVisualOperation()
+		
 		sender.shine()
 	}
 	
@@ -300,7 +317,55 @@ final class HomeViewController: UIViewController {
 		
 		operation = .none
 		
+		selectVisualOperation()
+		
 		print("TOTAL: \(total)")
 		
+	}
+	
+	// Muestra de forma visual la operación seleccionada
+	private func selectVisualOperation() {
+		
+		if !operating {
+			// Si no estamos operando
+			operatorAddition.selectOperation(false)
+			operatorSubstraction.selectOperation(false)
+			operatorMultiplication.selectOperation(false)
+			operatorDivision.selectOperation(false)
+		} else {
+			switch operation {
+			case .none, .percent:
+				operatorAddition.selectOperation(false)
+				operatorSubstraction.selectOperation(false)
+				operatorMultiplication.selectOperation(false)
+				operatorDivision.selectOperation(false)
+				break
+			case .addition:
+				operatorAddition.selectOperation(true)
+				operatorSubstraction.selectOperation(false)
+				operatorMultiplication.selectOperation(false)
+				operatorDivision.selectOperation(false)
+				break
+			case .substraction:
+				operatorAddition.selectOperation(false)
+				operatorSubstraction.selectOperation(true)
+				operatorMultiplication.selectOperation(false)
+				operatorDivision.selectOperation(false)
+				break
+			case .multiplication:
+				operatorAddition.selectOperation(false)
+				operatorSubstraction.selectOperation(false)
+				operatorMultiplication.selectOperation(true)
+				operatorDivision.selectOperation(false)
+				break
+			case .division:
+				operatorAddition.selectOperation(false)
+				operatorSubstraction.selectOperation(false)
+				operatorMultiplication.selectOperation(false)
+				operatorDivision.selectOperation(true)
+				break
+			
+			}
+		}
 	}
 }
