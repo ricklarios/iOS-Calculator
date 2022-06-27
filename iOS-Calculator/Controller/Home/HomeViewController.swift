@@ -50,8 +50,8 @@ final class HomeViewController: UIViewController {
 	
 	private let kDecimalSeparator = Locale.current.decimalSeparator!
 	private let kMaxLength = 9
-	private let kMaxValue: Double = 999999999
-	private let kMinValue: Double = 0.00000001
+	// private let kMaxValue: Double = 999999999
+	// private let kMinValue: Double = 0.00000001
 	
 	private enum OperationType {
 		case none, addition, substraction, multiplication, division, percent
@@ -63,6 +63,17 @@ final class HomeViewController: UIViewController {
 			let locale = Locale.current
 			formatter.groupingSeparator = ""
 			formatter.decimalSeparator = locale.decimalSeparator
+			formatter.numberStyle = .decimal
+			formatter.maximumIntegerDigits = 100
+			formatter.minimumFractionDigits = 0
+			formatter.maximumFractionDigits = 100
+			return formatter
+		}()
+	// Formateo de valores auxiliares totales
+		private let auxTotalFormatter: NumberFormatter = {
+			let formatter = NumberFormatter()
+			formatter.groupingSeparator = ""
+			formatter.decimalSeparator = ""
 			formatter.numberStyle = .decimal
 			formatter.maximumIntegerDigits = 100
 			formatter.minimumFractionDigits = 0
@@ -198,7 +209,7 @@ final class HomeViewController: UIViewController {
 	
 	@IBAction func numberDecimalAction(_ sender: UIButton) {
 		
-		let currentTemp = auxFormatter.string(from: NSNumber(value: temp))!
+		let currentTemp = auxTotalFormatter.string(from: NSNumber(value: temp))!
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
@@ -212,10 +223,13 @@ final class HomeViewController: UIViewController {
 	@IBAction func numberAction(_ sender: UIButton) {
 				
 		operatorAC.setTitle("C", for: .normal)
-		var currentTemp = auxFormatter.string(from: NSNumber(value: temp))!
+		
+		var currentTemp = auxTotalFormatter.string(from: NSNumber(value: temp))!
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
+		
+		currentTemp = auxFormatter.string(from: NSNumber(value: temp))!
 		
 		// Hemos seleccionado una operación
 		if operating {
@@ -278,9 +292,13 @@ final class HomeViewController: UIViewController {
 		
 		// Formateo en pantalla
 		
-		if total <= kMaxValue || total >= kMinValue {
-			resultLabel.text = printFormatter.string(from: NSNumber(value: total))
-		}
+		if let currentTotal = auxTotalFormatter.string(from: NSNumber(value: total)), currentTotal.count > kMaxLength {
+					resultLabel.text = printScientificFormatter.string(from: NSNumber(value: total))
+				} else {
+					resultLabel.text = printFormatter.string(from: NSNumber(value: total))
+				}
+		
+		operation = .none
 		
 		print("TOTAL: \(total)")
 		
